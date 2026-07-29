@@ -116,6 +116,22 @@
     .ending h3{font-size:clamp(1.7rem,5vw,2.6rem)}.ending button{margin-top:20px;padding:11px 24px;border:0;border-radius:99px;color:white;background:var(--rose);cursor:pointer}
     .requirements{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}.req{padding:8px;border:1px solid rgba(77,56,95,.15);font-size:.65rem}.req.ok{color:var(--good);border-color:rgba(95,140,128,.4)}.req.no{color:var(--bad)}
     @keyframes reveal{from{opacity:0;transform:translateY(8px)}}@keyframes spark{0%{opacity:0;transform:scale(.5)}38%{opacity:1}100%{opacity:0;transform:scale(1.8) rotate(45deg) translateY(-18px)}}
+    @media(max-height:700px) and (min-width:1101px){
+      header{min-height:48px;padding:4px clamp(14px,2vw,34px)}.mark{width:32px}.brand{gap:9px}h1{font-size:1.05rem}.micro.head{font-size:.5rem}
+      .head-actions button,.day-chip{padding:5px 10px}.game{height:calc(100svh - 48px)}
+      .portrait-name{bottom:43px;width:min(calc(100% - 24px),300px);padding:9px 12px}.portrait-name strong{font-size:.88rem}.portrait-name span{font-size:.5rem}
+      .faces{bottom:17px;width:min(calc(100% - 24px),300px)}
+      .control{padding:8px 302px 7px 14px}.topline{gap:8px;font-size:.54rem}.topline i{width:24px}
+      .title-row{margin:4px 0 5px}.title-row .micro{display:none}h2{font-size:1.25rem}.turn{min-width:82px}.turn strong{font-size:1.3rem}.turn span{font-size:.54rem}
+      .dialogue{min-height:54px;padding:17px 13px 7px}.nameplate{top:-9px;padding:2px 12px;font-size:.6rem}.dialogue p{font-size:.72rem;line-height:1.4}
+      .hint{height:29px;margin:4px 0;padding:3px 7px;overflow:hidden;font-size:.53rem;line-height:1.25}
+      .actions-title{margin:3px 0 4px}.actions-title p{font-size:.52rem}.actions-title span{font-size:.53rem}.actions{gap:4px}
+      .action{min-height:40px;padding:5px 5px 4px 33px}.action .icon{left:7px;top:7px;width:19px}.action strong{font-size:.64rem}.action small{margin-top:1px;font-size:.48rem;line-height:1.12}
+      .campaign{top:6px;right:8px;width:282px;gap:5px 8px;padding:6px 8px}.campaign strong{font-size:.67rem}.campaign span{font-size:.48rem}.campaign-track{height:3px}
+      .stats{top:56px;right:8px;width:282px;gap:4px}.stat{padding:5px}.stat label{font-size:.55rem}.bar{height:3px;margin-top:3px}
+      .inventory{top:151px;right:8px;width:282px;max-height:41px;gap:4px;font-size:.56rem}.item{padding:2px 5px}
+      .journal{top:197px;right:8px;bottom:7px;width:282px;padding:7px 8px}.journal summary{font-size:.57rem}.journal ol{font-size:.54rem;line-height:1.4}
+    }
     @media(max-width:1100px){html,body{height:auto;overflow:auto}.game{grid-template-columns:1fr;width:100%;height:auto;min-height:100svh;border:0}.portrait-side{min-height:clamp(520px,72svh,740px)}.portrait-window{height:min(calc(100% - 14px),700px);max-width:54%}.control{overflow:visible;padding:30px clamp(20px,6vw,50px) 45px}.campaign,.stats,.inventory,.journal{position:static;width:auto}.campaign{margin:0 0 15px}.stats{grid-template-columns:repeat(3,1fr);margin-bottom:17px}.inventory{max-height:none;margin-bottom:16px}.journal{margin-top:13px;padding-top:10px;border-width:1px 0 0;background:transparent}.journal ol{max-height:92px}.actions{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:580px){header{min-height:72px}.micro.head{display:none}.day-chip{display:none}.head-actions button{font-size:.7rem}.portrait-side{min-height:clamp(460px,68svh,620px)}.portrait-window{height:min(calc(100% - 10px),590px);max-width:68%}.title-row{align-items:start}.turn{min-width:90px}.turn strong{font-size:1.55rem}.stats{grid-template-columns:repeat(2,1fr)}.actions{grid-template-columns:1fr}.requirements{grid-template-columns:1fr}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
