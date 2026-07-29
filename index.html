@@ -132,8 +132,40 @@
       .inventory{top:151px;right:8px;width:282px;max-height:41px;gap:4px;font-size:.56rem}.item{padding:2px 5px}
       .journal{top:197px;right:8px;bottom:7px;width:282px;padding:7px 8px}.journal summary{font-size:.57rem}.journal ol{font-size:.54rem;line-height:1.4}
     }
-    @media(max-width:1100px){html,body{height:auto;overflow:auto}.game{grid-template-columns:1fr;width:100%;height:auto;min-height:100svh;border:0}.portrait-side{min-height:clamp(520px,72svh,740px)}.portrait-window{height:min(calc(100% - 14px),700px);max-width:54%}.control{overflow:visible;padding:30px clamp(20px,6vw,50px) 45px}.campaign,.stats,.inventory,.journal{position:static;width:auto}.campaign{margin:0 0 15px}.stats{grid-template-columns:repeat(3,1fr);margin-bottom:17px}.inventory{max-height:none;margin-bottom:16px}.journal{margin-top:13px;padding-top:10px;border-width:1px 0 0;background:transparent}.journal ol{max-height:92px}.actions{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:580px){header{min-height:72px}.micro.head{display:none}.day-chip{display:none}.head-actions button{font-size:.7rem}.portrait-side{min-height:clamp(460px,68svh,620px)}.portrait-window{height:min(calc(100% - 10px),590px);max-width:68%}.title-row{align-items:start}.turn{min-width:90px}.turn strong{font-size:1.55rem}.stats{grid-template-columns:repeat(2,1fr)}.actions{grid-template-columns:1fr}.requirements{grid-template-columns:1fr}}
+    @media(max-width:1100px) and (min-width:641px){
+      html,body{height:100%;overflow:hidden}header{min-height:48px;padding:4px 12px}.mark{width:32px}.brand{gap:9px}h1{font-size:1.05rem}.micro.head{font-size:.5rem}
+      .head-actions button,.day-chip{padding:5px 9px}.game{grid-template-columns:190px minmax(0,1fr);width:100%;height:calc(100svh - 48px);min-height:0;border:0}
+      .portrait-side{min-height:0;height:100%}.portrait-window{height:min(calc(100% - 8px),330px);max-width:80%}
+      .portrait-name{bottom:42px;width:172px;padding:8px 10px}.portrait-name strong{font-size:.82rem}.portrait-name span{font-size:.48rem}.faces{bottom:17px;width:172px}
+      .control{min-height:0;overflow-x:hidden;overflow-y:auto;padding:9px 13px 14px;scrollbar-width:thin}.topline{display:none}
+      .title-row{margin:3px 0 5px}.title-row .micro{display:none}h2{font-size:1.24rem}.turn{min-width:80px}.turn strong{font-size:1.25rem}.turn span{font-size:.54rem}
+      .campaign,.stats,.inventory,.journal{position:static;width:auto}.campaign{margin:0 0 5px;padding:6px 8px;gap:5px 8px}.campaign strong{font-size:.67rem}.campaign span{font-size:.48rem}.campaign-track{height:3px}
+      .stats{grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:5px}.stat{padding:5px}.stat label{font-size:.56rem}.bar{height:3px;margin-top:3px}
+      .inventory{max-height:36px;margin-bottom:5px;gap:4px;font-size:.56rem}.item{padding:2px 5px}
+      .dialogue{min-height:54px;padding:17px 13px 7px}.nameplate{top:-9px;padding:2px 12px;font-size:.6rem}.dialogue p{font-size:.72rem;line-height:1.4}
+      .hint{height:29px;margin:4px 0;padding:3px 7px;overflow:hidden;font-size:.53rem;line-height:1.25}.actions-title{margin:3px 0 4px}.actions{grid-template-columns:repeat(3,1fr);gap:4px}
+      .action{min-height:40px;padding:5px 5px 4px 33px}.action .icon{left:7px;top:7px;width:19px}.action strong{font-size:.64rem}.action small{margin-top:1px;font-size:.48rem;line-height:1.12}
+      .journal{margin-top:5px;padding:6px 8px;background:rgba(255,255,255,.42)}.journal ol{max-height:72px}
+    }
+    @media(max-width:640px){
+      html,body{height:100%;overflow:hidden}header{min-height:48px;padding:4px 9px}.mark{width:30px}.brand{gap:7px}.micro.head,.day-chip{display:none}h1{font-size:.92rem}
+      .head-actions{gap:5px}.head-actions button{padding:5px 8px;font-size:.62rem}.game{grid-template-columns:1fr;grid-template-rows:132px minmax(0,1fr);width:100%;height:calc(100svh - 48px);min-height:0;border:0}
+      .portrait-side{min-height:0;height:132px}.arch{inset:6px 8px}.portrait-window{bottom:0;left:65px;width:96px;height:126px;max-width:none;aspect-ratio:auto;transform:translateX(-50%)}
+      .portrait{background-size:400% auto;background-position:0 8%}.portrait.s1{background-position:33.333% 8%}.portrait.s2{background-position:66.666% 8%}.portrait.s3{background-position:100% 8%}
+      .portrait.reaction.r0{background-position:0 8%}.portrait.reaction.r1{background-position:33.333% 8%}.portrait.reaction.r2{background-position:66.666% 8%}.portrait.reaction.r3{background-position:100% 8%}
+      .portrait-name{right:10px;bottom:42px;left:124px;width:auto;padding:8px 10px;transform:none}.portrait-name strong{font-size:.82rem}.portrait-name span{font-size:.46rem}
+      .faces{right:10px;bottom:20px;left:124px;width:auto;transform:none}.spark{inset:10px 8px}
+      .control{min-height:0;overflow-x:hidden;overflow-y:auto;padding:9px 11px 14px;scrollbar-width:thin}.topline{display:none}.title-row{align-items:end;margin:3px 0 5px}.title-row .micro{display:none}
+      h2{font-size:1.18rem}.turn{min-width:74px}.turn strong{font-size:1.18rem}.turn span{font-size:.52rem}
+      .campaign,.stats,.inventory,.journal{position:static;width:auto}.campaign{margin:0 0 5px;padding:6px 8px;gap:5px 8px}.campaign strong{font-size:.64rem}.campaign span{font-size:.46rem}.campaign-track{height:3px}
+      .stats{grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:5px}.stat{padding:5px}.stat label{font-size:.53rem}.bar{height:3px;margin-top:3px}
+      .inventory{max-height:34px;margin-bottom:5px;gap:4px;font-size:.54rem}.item{padding:2px 5px}
+      .dialogue{min-height:54px;padding:17px 12px 7px}.nameplate{top:-9px;padding:2px 11px;font-size:.58rem}.dialogue p{font-size:.7rem;line-height:1.4}
+      .hint{height:29px;margin:4px 0;padding:3px 7px;overflow:hidden;font-size:.51rem;line-height:1.25}.actions-title{margin:3px 0 4px}.actions-title p{font-size:.5rem}.actions-title span{font-size:.51rem}
+      .actions{grid-template-columns:repeat(2,1fr);gap:4px}.action{min-height:40px;padding:5px 5px 4px 32px}.action .icon{left:6px;top:7px;width:19px}.action strong{font-size:.62rem}.action small{margin-top:1px;font-size:.46rem;line-height:1.12}
+      .journal{margin-top:5px;padding:6px 8px;background:rgba(255,255,255,.42)}.journal ol{max-height:70px}.requirements{grid-template-columns:1fr}
+    }
+    @media(max-width:420px){.actions{grid-template-columns:1fr}.portrait-name{left:112px}.faces{left:112px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
