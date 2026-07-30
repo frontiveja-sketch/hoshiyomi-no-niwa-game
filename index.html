@@ -223,6 +223,8 @@
     .modal{background:rgba(13,16,18,.82)}
     .event{border-color:rgba(149,126,91,.4);background:linear-gradient(145deg,#f6f3ec,#e9e7e1);box-shadow:0 28px 80px rgba(0,0,0,.32)}
     .event h3{color:#414540}.event>p{color:#62645f}
+    .event .comic-aside{margin:14px 0 4px;padding:9px 11px;border-left:2px solid #8f7756;color:#5f625d;background:rgba(146,126,91,.09);font-size:.72rem;line-height:1.65}
+    .event .comic-aside strong{display:block;margin-bottom:2px;color:#806a4b;font:600 .55rem Arial,sans-serif;letter-spacing:.12em}
     .event-choice,.save-slot{border-color:rgba(54,59,55,.18);color:#373a37;background:rgba(255,255,255,.48)}
     .event-choice:hover:not(:disabled){border-color:#806554;background:rgba(255,255,255,.8)}
     .save-actions button{border-color:rgba(54,59,55,.2);color:#414540}
@@ -352,12 +354,12 @@ $("reset").onclick=reset;reset();
   const SLOT_KEY = (slot) => `${SAVE_PREFIX}-slot-${slot}`;
 
   const chapters = [
-    { title: "第一章　星灯花の契約", hint: "親密度だけでは先へ進めません。信頼・知識・決意・王都評価を少しずつ育てましょう。" },
-    { title: "第二章　月影の温室", hint: "条件付きの選択肢が増えます。行動の偏りと体力配分に注意してください。" },
-    { title: "第三章　封じられた星図", hint: "第30日の選択で物語の主軸が決まります。庭・真理・王都、どの道を選ぶか考えましょう。" },
-    { title: "第四章　王都の星嵐", hint: "重要な品と章の誓いが結末を変えます。セーブ枠を分けて残すのがおすすめです。" },
-    { title: "第五章　遠ざかる軌道", hint: "レンの弱さを受け止めるか、未来のために背中を押すか。選択は表情にも現れます。" },
-    { title: "最終章　黎明の星花", hint: "特別な結末には六つの誓いと三つの重要品、そして五つの能力の積み重ねが必要です。" },
+    { title: "第一章　星灯花の契約", hint: "親密度だけでは先へ進めません。体力0は恋でも回復しないので、ちゃんと休みましょう。" },
+    { title: "第二章　月影の温室", hint: "条件付きの選択肢が増えます。なお、レンは『休憩』を研究用語だと思っています。" },
+    { title: "第三章　封じられた星図", hint: "第30日で物語の主軸が決まります。庭・真理・王都、そしてセーブ枠は慎重に選びましょう。" },
+    { title: "第四章　王都の星嵐", hint: "重要品と誓いが結末を変えます。評議会の会議は長いですが、人生には含めなくて大丈夫です。" },
+    { title: "第五章　遠ざかる軌道", hint: "レンは一人で抱え込みます。説得、研究、または温かいお茶で逃げ道を塞いでください。" },
+    { title: "最終章　黎明の星花", hint: "特別な結末には六つの誓いと三つの重要品が必要です。植木鉢への謝罪は条件に含まれません。" },
   ];
 
   const storyRows = [
@@ -430,34 +432,34 @@ $("reset").onclick=reset;reset();
 
   const choiceDeck = {
     bond: [
-      ["隣に立ち、弱さごと受け止める", "関係を深める", { aff: 3, trust: 4, will: 1 }, "garden", 2],
-      ["言葉を急がず、最後まで聞く", "信頼を優先", { trust: 5, lore: 1 }, "truth", 1],
-      ["未来のために一歩踏み出す", "決意を示す", { will: 4, renown: 2, aff: 1 }, "crown", 0],
+      ["隣に立ち、「その顔で無茶は禁止」と釘を刺す", "関係を深める", { aff: 3, trust: 4, will: 1 }, "garden", 2],
+      ["最後まで聞く。長くなりそうなのでお茶もいれる", "信頼を優先", { trust: 5, lore: 1 }, "truth", 1],
+      ["未来へ踏み出し、ついでに彼の逃げ道を塞ぐ", "決意を示す", { will: 4, renown: 2, aff: 1 }, "crown", 0],
     ],
     romance: [
-      ["今の気持ちを正直に伝える", "親密度を大きく上げる", { aff: 5, trust: 2, will: 1 }, "garden", 3],
-      ["冗談に隠して距離を縮める", "穏やかな前進", { aff: 3, trust: 3 }, "garden", 2],
-      ["答えを保留し、研究へ戻る", "知識を優先", { lore: 4, will: 2, aff: -1 }, "truth", 1],
+      ["今の気持ちを正直に伝え、彼の処理能力を止める", "親密度を大きく上げる", { aff: 5, trust: 2, will: 1 }, "garden", 3],
+      ["冗談に隠して距離を縮め、あとで本気だと明かす", "穏やかな前進", { aff: 3, trust: 3 }, "garden", 2],
+      ["「続きは論文のあと」と焦らし、研究へ戻る", "知識を優先", { lore: 4, will: 2, aff: -1 }, "truth", 1],
     ],
     research: [
-      ["二人で仮説を組み立てる", "知識と信頼を両立", { lore: 5, trust: 3 }, "truth", 0],
-      ["レンの方法を信じて任せる", "信頼を大きく上げる", { trust: 5, aff: 2 }, "garden", 2],
-      ["危険な実験に踏み切る", "高い成果と代償", { lore: 7, will: 3, trust: -2 }, "truth", 0],
+      ["二人で仮説を組み立て、誤字だけ花のせいにする", "知識と信頼を両立", { lore: 5, trust: 3 }, "truth", 0],
+      ["レンに任せる。ただし徹夜したら椅子ごと運ぶ", "信頼を大きく上げる", { trust: 5, aff: 2 }, "garden", 2],
+      ["危険な実験に踏み切り、先に始末書の題名を決める", "高い成果と代償", { lore: 7, will: 3, trust: -2 }, "truth", 0],
     ],
     mystery: [
-      ["手がかりを共有して解く", "秘密を分かち合う", { lore: 4, trust: 4 }, "truth", 0],
-      ["レンの境界を尊重して待つ", "信頼と親密度", { trust: 5, aff: 2 }, "garden", 1],
-      ["自分だけで真相を追う", "知識と決意、信頼低下", { lore: 6, will: 3, trust: -2 }, "truth", 0],
+      ["手がかりを共有し、暗号の悪筆には触れない", "秘密を分かち合う", { lore: 4, trust: 4 }, "truth", 0],
+      ["彼が話すまで待つ。圧はお茶菓子だけにかける", "信頼と親密度", { trust: 5, aff: 2 }, "garden", 1],
+      ["一人で真相を追う。見つかった時の言い訳も考える", "知識と決意、信頼低下", { lore: 6, will: 3, trust: -2 }, "truth", 0],
     ],
     city: [
-      ["レンを守るため公に発言する", "評価と親密度", { renown: 5, aff: 3, will: 2 }, "crown", 0],
-      ["裏側で根回しを進める", "評価と信頼", { renown: 4, trust: 4 }, "crown", 1],
-      ["研究成果で沈黙させる", "知識を優先", { lore: 5, renown: 2, trust: 1 }, "truth", 0],
+      ["レンを守るため公に発言し、議長の長話も止める", "評価と親密度", { renown: 5, aff: 3, will: 2 }, "crown", 0],
+      ["裏で根回しし、お菓子の差し入れ先を間違えない", "評価と信頼", { renown: 4, trust: 4 }, "crown", 1],
+      ["研究成果で黙らせる。図表は大きく、字は少なく", "知識を優先", { lore: 5, renown: 2, trust: 1 }, "truth", 0],
     ],
     crisis: [
-      ["レンと背中を預けて動く", "信頼と決意", { trust: 4, will: 4, energy: -1 }, "garden", 0],
-      ["資料と花を最優先で守る", "知識と評価", { lore: 5, renown: 3 }, "truth", 1],
-      ["人々を率いて被害を抑える", "評価と決意", { renown: 5, will: 4, energy: -1 }, "crown", 0],
+      ["レンと背中を預ける。ぶつかった肘はあとで謝る", "信頼と決意", { trust: 4, will: 4, energy: -1 }, "garden", 0],
+      ["資料と花を守る。高価なティーポットも一応守る", "知識と評価", { lore: 5, renown: 3 }, "truth", 1],
+      ["人々を率い、「走らない、押さない、恋バナしない」", "評価と決意", { renown: 5, will: 4, energy: -1 }, "crown", 0],
     ],
   };
 
@@ -573,49 +575,49 @@ $("reset").onclick=reset;reset();
 
   const actionLines = {
     green: [
-      "君と育てた花は、僕一人の時より素直だ。少し妬けるくらいに。",
-      "その手つき、もう助手とは呼べないね。僕の大切な共同研究者だ。",
-      "花に触れる君を見ていると、ここが帰る場所に思える。",
+      "君が来ると花が素直になる。僕には噛みつくのに。……植物にも好みがあるらしい。",
+      "その手つき、もう助手とは呼べないね。昨日、僕が水をやりすぎた件は共同研究の秘密にしよう。",
+      "この蔓、また僕の袖だけつかんでいる。君と話す時の僕より積極的だ。",
     ],
     archive: [
-      "君の読み方は大胆だけど、筋が通っている。次の頁も一緒に見よう。",
-      "秘密を知るたび、君に隠し事をするのが難しくなる。",
-      "この星図に二人の名前を書けたら……いや、続きを調べよう。",
+      "禁書庫には三つの禁がある。飲食、持ち出し、司書の寝癖を指摘すること。最後が最も危険だ。",
+      "この暗号は父の字だ。解読に十年かかった。字を丁寧に書く大切さを、遺言より強く感じる。",
+      "この星図に二人の名前を……いや、落書きではない。共同署名の予行演習だ。",
     ],
     city: [
-      "君は人の心を動かす。研究室に閉じこもっていた僕にはない力だ。",
-      "王都が君を信じる理由が分かった。僕も同じだから。",
-      "頼もしいよ。でも、危険な時は僕にも君を守らせて。",
+      "評議会を三分で黙らせたね。学術的には奇跡、個人的には少し怖い。",
+      "申請書に判が十二個必要らしい。王都を救う前に、机の空欄を救おう。",
+      "頼もしいよ。さっきの役人が君を見て姿勢を正した。僕も正した。",
     ],
     tea: [
-      "今日は君の好きな茶葉にした。覚えていたことは、秘密にしない。",
-      "こういう時間が研究より大切になるなんて、以前の僕なら信じなかった。",
-      "カップを片づけるのが惜しい。もう少しだけ話していかない？",
+      "今日は君の好きな茶葉にした。緊張してスプーンを六本出したことは見なかったことにして。",
+      "砂糖は一つだね。僕は二つ。徹夜明けは三つ。昨日は数えるのをやめた。",
+      "カップを片づけるのが惜しい。あと、君が帰ると僕がまた花に相談を始める。",
     ],
     observe: [
-      "同じ星を見ているはずなのに、君が隣にいると意味が変わる。",
-      "七分先の未来より、今の君の表情を見ていたい。",
-      "この座標を覚えておこう。迷った時、二人で帰ってこられるように。",
+      "七分先の未来を見た。僕が同じ説明を三回して、君が四回目で笑っていた。",
+      "流星だ。願い事を……研究費、と言いかけた。今のは忘れて。",
+      "この座標を覚えよう。迷子対策だ。主に方向音痴の天象学者一名の。",
     ],
     walk: [
-      "手をつないでもいい？　転ばないため、という理由では足りないかな。",
-      "君の歩幅を覚えた。離れても、すぐ見つけられる。",
-      "遠回りをしよう。今夜くらい、結末を急がなくてもいい。",
+      "手をつないでもいい？　転倒防止という研究目的だ。顔が赤いのは副作用。",
+      "君の歩幅を覚えた。僕の歩幅が急に小さくなった件は、観測誤差ということにしよう。",
+      "遠回りをしよう。近道は知っている。今日は採用しないだけだ。",
     ],
     gift: [
-      "僕のために？　……困ったな。大事にしすぎて使えそうにない。",
-      "受け取ったもの以上を返したい。星蝕の後にも、時間をくれる？",
-      "君からもらった証を、いちばん心臓に近い場所へ置いておく。",
+      "僕のために？　困ったな。大事にしすぎて展示ケースと警備員が必要になりそうだ。",
+      "受け取った以上を返したい。候補は花、星図、僕の残り時間。最後だけ包装が難しい。",
+      "心臓に近い場所へ置くよ。胸ポケットだ。解剖学的にも、たぶん正しい。",
     ],
     letters: [
-      "君の文章は温かいね。冷たい評議会の返事まで、少し人間らしくなる。",
-      "二人の署名を並べた。悪くない……むしろ、嬉しい。",
-      "返事が増えたのは研究の力だけじゃない。君が信頼を結んだからだ。",
+      "君の文章は温かいね。僕の文章は『要件』『根拠』『以上』で冬みたいだ。",
+      "二人の署名を並べた。悪くない。結婚届みたいだと思った人は、今すぐ忘れて。",
+      "返事が増えた。研究の力と君の人柄、それから同封した焼き菓子の力だ。",
     ],
     rest: [
-      "休むことも研究の一部だよ。君が元気でいることが、僕には重要だから。",
-      "目を閉じて。ここは僕が見ている。",
-      "今日は頑張りすぎたね。明日も隣にいてほしいから、今は休もう。",
+      "休むことも研究だよ。僕は昨日、疲れすぎて植木鉢に議事録を読ませていた。",
+      "目を閉じて。ここは僕が見ている。……起きたら僕も寝ていた場合は、お互い黙っていよう。",
+      "今日は頑張りすぎたね。明日も隣にいてほしい。あと、机が僕をベッドだと思い始めている。",
     ],
   };
 
@@ -686,6 +688,42 @@ $("reset").onclick=reset;reset();
   const dominantRoute = () => Object.entries(state.routes).sort((a, b) => b[1] - a[1])[0][0];
   const statForMood = { bond: "trust", romance: "aff", research: "lore", mystery: "lore", city: "renown", crisis: "will" };
   const statLabel = { aff: "親密度", trust: "信頼", lore: "知識", will: "決意", renown: "王都評価" };
+  const comicAsides = {
+    bond: [
+      "沈黙が続いた。気まずいのではない。レンが告白の書き出しを脳内で十五回推敲している。",
+      "星灯花が二人の間だけ妙に明るい。照明係としては優秀だが、空気は読まない。",
+      "レンは平静を装っている。耳だけが独立して正直だった。",
+    ],
+    romance: [
+      "近くの鉢植えが一斉にこちらを向いた。研究所の噂は、だいたい植物経由で広まる。",
+      "レンは視線をそらした先に鏡があることへ気づき、さらに赤くなった。",
+      "助手がそっと扉を閉めた。あとで『偶然です』と三回主張する予定らしい。",
+    ],
+    research: [
+      "計算は完璧だった。完璧でなかったのは、レンがインク壺を袖で倒した一点だけだ。",
+      "重要な発見の横に、なぜか『牛乳を買う』と書かれている。紙が足りなかったらしい。",
+      "二人は難解な式を解いた。最後まで解けなかったのは、誰が片づけるかという問題だった。",
+    ],
+    mystery: [
+      "厳重な封印には『関係者以外禁止』とある。鍵は植木鉢の下にあった。防犯意識が惜しい。",
+      "不穏な足音が近づいた。正体は夜食を探す研究主任だった。",
+      "秘密の扉が重々しく開いた。蝶番の油を差すべきだ、という現実的な課題も判明した。",
+    ],
+    city: [
+      "評議会は二時間議論し、『次回も議論する』ことだけを全会一致で決めた。",
+      "役人は書類を三部求めた。理由は『昔から三部だから』。王都最大の謎である。",
+      "市民の期待は高い。ついでに研究所の食堂を改善してほしいという署名も混ざっている。",
+    ],
+    crisis: [
+      "緊迫する中、非常ベルより先に主任の『私の昼食！』が響いた。昼食は無事だった。",
+      "全員が走り出した。レンだけ一度戻り、火を消したか確認した。こういうところは堅実だ。",
+      "世界の危機だが、壊れた窓の修理申請は通常どおり七営業日かかるらしい。",
+    ],
+  };
+  const comicAsideFor = (mood, seed) => {
+    const lines = comicAsides[mood] || comicAsides.research;
+    return lines[Math.abs(seed || 0) % lines.length];
+  };
 
   const formatEffects = (effects) => Object.entries(effects)
     .map(([key, value]) => `${value >= 0 ? "+" : ""}${statLabel[key] || (key === "energy" ? "体力" : key)}${value}`)
@@ -754,6 +792,7 @@ $("reset").onclick=reset;reset();
       text,
       mood,
       reaction,
+      comic: comicAsideFor(mood, day),
       checkpoint: day % 10 === 0,
     };
     event.choices = event.checkpoint ? checkpointChoices(event) : standardChoices(event);
@@ -777,6 +816,7 @@ $("reset").onclick=reset;reset();
       mood: actionId === "city" ? "city" : actionId === "archive" || actionId === "observe" ? "research" : "romance",
       reaction,
       reward,
+      comic: comicAsideFor(actionId === "city" ? "city" : actionId === "archive" || actionId === "observe" ? "research" : "romance", state.steps + count),
       side: true,
     };
     event.choices = standardChoices({ ...event, day: state.day });
@@ -921,7 +961,8 @@ $("reset").onclick=reset;reset();
     const box = el("event");
     box.className = "event";
     const paragraphs = event.text.split("\n").map((text) => `<p>${text}</p>`).join("");
-    box.innerHTML = `<p class="micro">${event.tag}</p><h3>${event.title}</h3>${paragraphs}<div class="event-choices"></div>`;
+    const comic = event.comic ? `<p class="comic-aside"><strong>その頃の研究所</strong>${event.comic}</p>` : "";
+    box.innerHTML = `<p class="micro">${event.tag}</p><h3>${event.title}</h3>${paragraphs}${comic}<div class="event-choices"></div>`;
     const list = box.querySelector(".event-choices");
     event.choices.forEach((choice) => {
       const button = document.createElement("button");
@@ -940,10 +981,10 @@ $("reset").onclick=reset;reset();
     const trueItems = ["月白花の核", "天球儀の欠片", "王家の星印"].every(hasItem);
     const trueEnding = state.aff >= 88 && state.trust >= 85 && state.lore >= 75
       && state.will >= 65 && state.renown >= 55 && state.vows.length >= 6 && trueItems;
-    if (trueEnding) return ["S", "星詠みの庭", "犠牲のない術式が完成し、星蝕は黎明へほどけた。レンはすべての記憶を抱いたまま、恋人として、研究者として、あなたと六十日より長い未来を選ぶ。"];
-    if (state.route === "garden" && state.aff >= 78 && state.trust >= 70) return ["A", "花守たちの春", "王都の役目を分かち合いながら、二人は温室を帰る場所にした。季節ごとに増える花と同じ数だけ、穏やかな約束が増えていく。"];
-    if (state.route === "truth" && state.lore >= 82 && state.trust >= 68) return ["A", "ふたりの星図", "二人は新しい天文学の扉を開き、犠牲を必要としない研究を世界へ広げた。論文の署名は、いつも同じ行に並ぶ。"];
-    if (state.route === "crown" && state.renown >= 78 && state.will >= 68) return ["A", "王都を照らす星", "あなたとレンは王都の花守として人々に迎えられた。公の場では凛々しく、温室へ帰れば二人だけの笑顔を交わす。"];
+    if (trueEnding) return ["S", "星詠みの庭", "犠牲のない術式が完成し、星蝕は黎明へほどけた。レンは恋人として、研究者として、あなたとの未来を選ぶ。二人が最初に決めたのは結婚式の日ではなく、共同論文の締切だった。"];
+    if (state.route === "garden" && state.aff >= 78 && state.trust >= 70) return ["A", "花守たちの春", "二人は温室を帰る場所にした。季節ごとに花と約束が増え、レンはついに『鉢植えへ恋愛相談をしない』という難しい誓いも立てた。"];
+    if (state.route === "truth" && state.lore >= 82 && state.trust >= 68) return ["A", "ふたりの星図", "二人は新しい天文学を世界へ広げた。論文の署名はいつも同じ行に並び、査読者はなぜ謝辞だけ妙に甘いのか首をかしげた。"];
+    if (state.route === "crown" && state.renown >= 78 && state.will >= 68) return ["A", "王都を照らす星", "二人は王都の花守として迎えられた。公の場では凛々しく、温室ではお茶の砂糖をどちらが入れすぎたかで真剣に議論している。"];
     if (state.aff >= 58 && state.trust >= 52) return ["B", "次の六十日へ", "星蝕は越えたが、言葉にできなかった想いが残った。けれど二人は別れず、次の季節を一緒に選び直す。"];
     if (state.lore >= 60 || state.renown >= 60) return ["C", "星花の記録", "王都と研究は守られた。レンとの距離は戻らなかったが、共に過ごした六十日は消えない記録として残る。"];
     return ["D", "閉じた蕾", "星灯花は眠り、二人は違う道を歩いた。失敗ではなく、まだ答えに届かなかった物語として、庭は次の花守を待つ。"];
@@ -1032,7 +1073,7 @@ $("reset").onclick=reset;reset();
     currentEvent = null;
     pendingEnding = false;
     el("modal").hidden = true;
-    say(`おかえり。第${Math.min(state.day, MAX_DAY)}日の続きから始めよう。`);
+    say(`おかえり。第${Math.min(state.day, MAX_DAY)}日の続きから始めよう。君がいない間、花には何も相談していない。ほとんど。`);
     render();
     sparkle();
     showToast("セーブデータを読み込みました");
@@ -1089,7 +1130,7 @@ $("reset").onclick=reset;reset();
     currentEvent = null;
     pendingEnding = false;
     el("modal").hidden = true;
-    say("星蝕まで六十日。長い研究になる。……それでも、僕と最後まで歩いてくれる？");
+    say("星蝕まで六十日。長い研究になる。先に言うけど、僕は徹夜すると植木鉢に謝り始める。……止めてくれる？");
     render();
     sparkle();
     autoSave();
@@ -1103,7 +1144,7 @@ $("reset").onclick=reset;reset();
     el("modal").hidden = true;
     el("saveButton").onclick = openSaveMenu;
     el("reset").onclick = resetGame;
-    say("星蝕まで六十日。長い研究になる。……それでも、僕と最後まで歩いてくれる？");
+    say("星蝕まで六十日。長い研究になる。先に言うけど、僕は徹夜すると植木鉢に謝り始める。……止めてくれる？");
     render();
     sparkle();
     if (storageRead(AUTO_KEY)?.state?.steps > 0) {
