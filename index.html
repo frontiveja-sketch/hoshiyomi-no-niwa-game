@@ -166,6 +166,69 @@
       .journal{margin-top:5px;padding:6px 8px;background:rgba(255,255,255,.42)}.journal ol{max-height:70px}.requirements{grid-template-columns:1fr}
     }
     @media(max-width:420px){.actions{grid-template-columns:1fr}.portrait-name{left:112px}.faces{left:112px}}
+
+    /* Understated editorial skin */
+    :root{
+      --night:#16191c;--night2:#2a2f32;--paper:#f3f0e9;--ink:#292a27;
+      --plum:#414540;--rose:#8c604f;--blush:#b9947d;--gold:#a58a63;
+      --muted:#74736d;--good:#5c756b;--bad:#965f5b
+    }
+    body{
+      background:
+        radial-gradient(circle at 82% 16%,rgba(139,151,137,.18),transparent 28rem),
+        radial-gradient(circle at 10% 82%,rgba(167,139,107,.1),transparent 30rem),
+        linear-gradient(135deg,var(--night),var(--night2) 58%,#1b1e20)
+    }
+    .stars{opacity:.1;background-image:radial-gradient(circle,rgba(255,255,255,.65) 0 1px,transparent 1.5px);background-size:149px 149px}
+    header{background:rgba(17,20,22,.26);border-bottom-color:rgba(255,255,255,.1)}
+    .mark{border-color:rgba(214,202,180,.45);border-radius:2px;color:#d8ccb7;font:400 .86rem Georgia,serif}
+    .micro{color:#8d7454;font-weight:600;letter-spacing:.16em}
+    .head-actions button{border-radius:2px;background:transparent}
+    .head-actions button:hover,.head-actions button:focus-visible{border-color:rgba(216,204,182,.72);background:rgba(255,255,255,.06);outline:none}
+    .day-chip{border:0;border-left:1px solid rgba(216,204,182,.42);color:#d6cbb9;font-weight:500}
+    .portrait-side{
+      background:
+        radial-gradient(circle at 50% 24%,rgba(167,177,165,.16),transparent 31%),
+        linear-gradient(to top,rgba(12,15,17,.96),transparent 54%)
+    }
+    .portrait-side:after{background:linear-gradient(to top,#15191b,transparent)}
+    .arch{border-color:rgba(213,202,181,.16);border-radius:48% 48% 0 0}
+    .arch:before,.arch:after{border-color:rgba(255,255,255,.045)}
+    .portrait{filter:saturate(.76) contrast(1.02)}
+    .portrait.s2{filter:saturate(.82) brightness(1.01)}.portrait.s3{filter:saturate(.86) brightness(1.02)}
+    .portrait-name{border-color:rgba(255,255,255,.14);background:rgba(23,27,29,.79);backdrop-filter:blur(7px)}
+    .portrait-name span{color:#bfc1bb;font-weight:500;letter-spacing:.13em}
+    .faces i.on{border-color:#c3a887;background:#c3a887;box-shadow:none}
+    .spark{display:none}
+    .control{background:linear-gradient(145deg,rgba(246,243,236,.99),rgba(235,233,227,.98));box-shadow:-24px 0 60px rgba(5,8,10,.2)}
+    .control:before{width:1px;opacity:1;background:rgba(165,138,99,.55)}
+    .topline{color:#72736e}.topline i{background:#a58a63}
+    h2{color:#292b28}
+    .turn strong{color:#7b5849}
+    .campaign,.stat,.journal{border-color:rgba(54,59,55,.14);background:rgba(255,255,255,.42)}
+    .campaign strong{color:#424741}.campaign-track,.bar{background:#dcdad4}
+    .campaign-track i,.bar i{background:linear-gradient(90deg,#aa8d6b,#765748)}
+    .stat.energy .bar i{background:linear-gradient(90deg,#82968b,#526c62)}
+    .stat label,.inventory,.journal summary,.journal ol{color:#70716c}
+    .item{border-color:rgba(126,103,75,.28);background:rgba(255,255,255,.48)}
+    .dialogue{border-block-color:rgba(131,108,76,.32);background:linear-gradient(90deg,rgba(255,255,255,.58),transparent)}
+    .nameplate{background:#414540}
+    .hint{border-left-color:#8f7756;color:#6f706b;background:rgba(255,255,255,.3)}
+    .hint>span:first-child{color:#8f7756;font:600 .5rem Arial,sans-serif;letter-spacing:.12em}
+    .actions-title p{color:#6f716d;font-family:inherit;font-weight:500;letter-spacing:.1em}
+    .action{padding-left:12px;border-color:rgba(55,60,56,.18);color:#373a37;background:rgba(255,255,255,.54)}
+    .action .icon{display:none}
+    .action:hover:not(:disabled),.action:focus-visible:not(:disabled){border-color:#806554;background:rgba(255,255,255,.86);transform:none;box-shadow:0 5px 14px rgba(39,43,40,.07)}
+    .action small{color:#777873}
+    .modal{background:rgba(13,16,18,.82)}
+    .event{border-color:rgba(149,126,91,.4);background:linear-gradient(145deg,#f6f3ec,#e9e7e1);box-shadow:0 28px 80px rgba(0,0,0,.32)}
+    .event h3{color:#414540}.event>p{color:#62645f}
+    .event-choice,.save-slot{border-color:rgba(54,59,55,.18);color:#373a37;background:rgba(255,255,255,.48)}
+    .event-choice:hover:not(:disabled){border-color:#806554;background:rgba(255,255,255,.8)}
+    .save-actions button{border-color:rgba(54,59,55,.2);color:#414540}
+    .toast{border-color:rgba(214,202,180,.3);background:rgba(24,28,30,.96)}
+    .ending .rank{display:none}.ending button{border-radius:2px;background:#725447}
+    @media(max-width:1100px){.action{padding-left:8px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
@@ -173,26 +236,26 @@
 <main class="shell">
   <div class="stars" aria-hidden="true"></div>
   <header>
-    <div class="brand"><span class="mark">✦</span><div><p class="micro head">OFFLINE STRATEGY ROMANCE</p><h1>星詠みの庭</h1></div></div>
-    <div class="head-actions"><span class="day-chip" id="dayChip">DAY 1 / MORNING</span><button type="button" id="saveButton">セーブ</button><button type="button" id="reset">最初から</button></div>
+    <div class="brand"><span class="mark">H</span><div><p class="micro head">INTERACTIVE STORY</p><h1>星詠みの庭</h1></div></div>
+    <div class="head-actions"><span class="day-chip" id="dayChip">1日目 / 朝</span><button type="button" id="saveButton">記録</button><button type="button" id="reset">最初から</button></div>
   </header>
   <section class="game">
     <aside class="portrait-side">
       <div class="arch"></div>
       <div class="portrait-window"><div class="portrait" id="portrait" role="img" aria-label="レンの立ち絵"></div></div>
-      <div class="spark" id="spark" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
-      <div class="portrait-name"><strong>レン・アステル</strong><span>CELESTIAL BOTANIST</span></div>
+      <div class="spark" id="spark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="portrait-name"><strong>レン・アステル</strong><span>王立天象院・植物研究官</span></div>
       <div class="faces" id="faces"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </aside>
     <section class="control">
       <div class="topline"><span>六十日の星花編</span><i></i><span>王立天象院・星花温室</span></div>
       <div class="title-row">
-        <div><p class="micro">A SIX-CHAPTER LONG ROMANCE</p><h2 id="phaseTitle">第1日・朝</h2></div>
+        <div><p class="micro">六十日の記録</p><h2 id="phaseTitle">第1日・朝</h2></div>
         <div class="turn"><strong id="turnsLeft">180</strong><span>残り行動</span></div>
       </div>
       <div class="campaign"><strong id="chapterTitle">第一章　星灯花の契約</strong><span id="chapterMeta">全60日・想定5〜6時間</span><div class="campaign-track"><i id="campaignBar"></i></div></div>
       <div class="stats">
-        <div class="stat"><label>好感度 <b id="affVal">10</b></label><div class="bar"><i id="affBar"></i></div></div>
+        <div class="stat"><label>親密度 <b id="affVal">10</b></label><div class="bar"><i id="affBar"></i></div></div>
         <div class="stat"><label>信頼 <b id="trustVal">8</b></label><div class="bar"><i id="trustBar"></i></div></div>
         <div class="stat"><label>星花知識 <b id="loreVal">0</b></label><div class="bar"><i id="loreBar"></i></div></div>
         <div class="stat"><label>決意 <b id="willVal">3</b></label><div class="bar"><i id="willBar"></i></div></div>
@@ -201,8 +264,8 @@
       </div>
       <div class="inventory" id="inventory"><span>大切なもの</span></div>
       <div class="dialogue" id="dialogue"><span class="nameplate" id="speaker">レン</span><p id="line"></p></div>
-      <div class="hint"><span>✦</span><span id="hint">高い好感度だけでは真実の恋には届かない。信頼と研究、そして自分の決意も育てよう。</span></div>
-      <div class="actions-title"><p>SELECT AN ACTION</p><span id="phaseLabel">朝の行動を選んでください</span></div>
+      <div class="hint"><span>NOTE</span><span id="hint">親密度だけでは先へ進めません。信頼と研究、そして自分の決意も育てましょう。</span></div>
+      <div class="actions-title"><p>行動を選ぶ</p><span id="phaseLabel">朝の行動を選んでください</span></div>
       <div class="actions" id="actions"></div>
       <details class="journal"><summary>これまでの記録</summary><ol id="log"></ol></details>
     </section>
@@ -289,12 +352,12 @@ $("reset").onclick=reset;reset();
   const SLOT_KEY = (slot) => `${SAVE_PREFIX}-slot-${slot}`;
 
   const chapters = [
-    { title: "第一章　星灯花の契約", hint: "好感度だけでは先へ進めません。信頼・知識・決意・王都評価を少しずつ育てましょう。" },
+    { title: "第一章　星灯花の契約", hint: "親密度だけでは先へ進めません。信頼・知識・決意・王都評価を少しずつ育てましょう。" },
     { title: "第二章　月影の温室", hint: "条件付きの選択肢が増えます。行動の偏りと体力配分に注意してください。" },
     { title: "第三章　封じられた星図", hint: "第30日の選択で物語の主軸が決まります。庭・真理・王都、どの道を選ぶか考えましょう。" },
     { title: "第四章　王都の星嵐", hint: "重要な品と章の誓いが結末を変えます。セーブ枠を分けて残すのがおすすめです。" },
     { title: "第五章　遠ざかる軌道", hint: "レンの弱さを受け止めるか、未来のために背中を押すか。選択は表情にも現れます。" },
-    { title: "最終章　黎明の星花", hint: "真の結末には六つの誓いと三つの重要品、そして五つの能力の積み重ねが必要です。" },
+    { title: "最終章　黎明の星花", hint: "特別な結末には六つの誓いと三つの重要品、そして五つの能力の積み重ねが必要です。" },
   ];
 
   const storyRows = [
@@ -372,7 +435,7 @@ $("reset").onclick=reset;reset();
       ["未来のために一歩踏み出す", "決意を示す", { will: 4, renown: 2, aff: 1 }, "crown", 0],
     ],
     romance: [
-      ["今の気持ちを正直に伝える", "好感度を大きく上げる", { aff: 5, trust: 2, will: 1 }, "garden", 3],
+      ["今の気持ちを正直に伝える", "親密度を大きく上げる", { aff: 5, trust: 2, will: 1 }, "garden", 3],
       ["冗談に隠して距離を縮める", "穏やかな前進", { aff: 3, trust: 3 }, "garden", 2],
       ["答えを保留し、研究へ戻る", "知識を優先", { lore: 4, will: 2, aff: -1 }, "truth", 1],
     ],
@@ -383,11 +446,11 @@ $("reset").onclick=reset;reset();
     ],
     mystery: [
       ["手がかりを共有して解く", "秘密を分かち合う", { lore: 4, trust: 4 }, "truth", 0],
-      ["レンの境界を尊重して待つ", "信頼と好感度", { trust: 5, aff: 2 }, "garden", 1],
+      ["レンの境界を尊重して待つ", "信頼と親密度", { trust: 5, aff: 2 }, "garden", 1],
       ["自分だけで真相を追う", "知識と決意、信頼低下", { lore: 6, will: 3, trust: -2 }, "truth", 0],
     ],
     city: [
-      ["レンを守るため公に発言する", "評価と好感度", { renown: 5, aff: 3, will: 2 }, "crown", 0],
+      ["レンを守るため公に発言する", "評価と親密度", { renown: 5, aff: 3, will: 2 }, "crown", 0],
       ["裏側で根回しを進める", "評価と信頼", { renown: 4, trust: 4 }, "crown", 1],
       ["研究成果で沈黙させる", "知識を優先", { lore: 5, renown: 2, trust: 1 }, "truth", 0],
     ],
@@ -559,7 +622,7 @@ $("reset").onclick=reset;reset();
   const actionsLong = [
     {
       id: "green", icon: "❀", name: "星花を育成する", cost: 2,
-      note: "好感度・知識／庭ルート",
+      note: "親密度・知識／庭ルート",
       run() { gain({ aff: 2, lore: 3, trust: 1, energy: -2 }); addRoute("garden"); },
     },
     {
@@ -588,9 +651,9 @@ $("reset").onclick=reset;reset();
     },
     {
       id: "walk", icon: "♡", name: "星見の散歩へ誘う", cost: 3,
-      note: "好感度25以上・夜・各日1回",
+      note: "親密度25以上・夜・各日1回",
       unlock: () => state.aff >= 25 && state.phase === 2 && !state.used.includes("walk"),
-      lock: "好感度25以上の夜",
+      lock: "親密度25以上の夜",
       run() { gain({ aff: 5, trust: 2, will: 1, energy: -3 }); state.used.push("walk"); addRoute("garden", 2); },
     },
     {
@@ -622,7 +685,7 @@ $("reset").onclick=reset;reset();
 
   const dominantRoute = () => Object.entries(state.routes).sort((a, b) => b[1] - a[1])[0][0];
   const statForMood = { bond: "trust", romance: "aff", research: "lore", mystery: "lore", city: "renown", crisis: "will" };
-  const statLabel = { aff: "好感度", trust: "信頼", lore: "知識", will: "決意", renown: "王都評価" };
+  const statLabel = { aff: "親密度", trust: "信頼", lore: "知識", will: "決意", renown: "王都評価" };
 
   const formatEffects = (effects) => Object.entries(effects)
     .map(([key, value]) => `${value >= 0 ? "+" : ""}${statLabel[key] || (key === "energy" ? "体力" : key)}${value}`)
@@ -652,7 +715,7 @@ $("reset").onclick=reset;reset();
     return [
       {
         label: "二人の心と花を守る誓いを立てる",
-        note: `庭の誓い ／ 好感度${base}・信頼${base}以上`,
+        note: `庭の誓い ／ 親密度${base}・信頼${base}以上`,
         effects: { aff: 5, trust: 5, will: 2 }, route: "garden", reaction: 3,
         ok: () => state.aff >= base && state.trust >= base,
         vow: `第${chapter}章・庭の誓い`,
@@ -686,7 +749,7 @@ $("reset").onclick=reset;reset();
     const [title, text, mood, reaction] = row;
     const event = {
       day,
-      tag: day % 10 === 0 ? `CHAPTER ${chapterNumber(day)} FINALE` : `DAY ${String(day).padStart(2, "0")} STORY`,
+      tag: day % 10 === 0 ? `第${chapterNumber(day)}章・節目` : `第${String(day).padStart(2, "0")}日の記録`,
       title,
       text,
       mood,
@@ -708,7 +771,7 @@ $("reset").onclick=reset;reset();
     if (state.seen.includes(marker)) return null;
     state.seen.push(marker);
     const event = {
-      tag: `BOND EPISODE ${String(state.seen.filter((x) => x.startsWith("side-")).length).padStart(2, "0")}`,
+      tag: `小さな出来事 ${String(state.seen.filter((x) => x.startsWith("side-")).length).padStart(2, "0")}`,
       title,
       text,
       mood: actionId === "city" ? "city" : actionId === "archive" || actionId === "observe" ? "research" : "romance",
@@ -739,12 +802,12 @@ $("reset").onclick=reset;reset();
   const render = () => {
     const day = Math.min(state.day, MAX_DAY);
     const chapter = chapterNumber(day);
-    el("dayChip").textContent = `DAY ${day} / ${PHASES_EN[state.phase]}`;
+    el("dayChip").textContent = `${day}日目 / ${PHASES[state.phase]}`;
     el("phaseTitle").textContent = `第${day}日・${PHASES[state.phase]}`;
     el("phaseLabel").textContent = `${PHASES[state.phase]}の行動を選んでください`;
     el("turnsLeft").textContent = Math.max(0, MAX_TURNS - state.steps);
     el("chapterTitle").textContent = chapters[chapter - 1].title;
-    el("chapterMeta").textContent = `第${chapter}章 / 全60日・想定5〜6時間`;
+    el("chapterMeta").textContent = `第${chapter}章 / 全60日・目安5〜6時間`;
     el("campaignBar").style.width = `${Math.min(100, (state.steps / MAX_TURNS) * 100)}%`;
     el("hint").textContent = chapters[chapter - 1].hint;
 
@@ -783,7 +846,7 @@ $("reset").onclick=reset;reset();
     el("log").innerHTML = state.log.length
       ? state.log.map((entry) => `<li>${entry}</li>`).join("")
       : "<li>六十日にわたる物語は、まだ始まったばかり。</li>";
-    el("saveButton").textContent = storageRead(AUTO_KEY) ? "セーブ◆" : "セーブ";
+    el("saveButton").textContent = storageRead(AUTO_KEY) ? "記録あり" : "記録";
   };
 
   const doAction = (action) => {
@@ -895,7 +958,7 @@ $("reset").onclick=reset;reset();
     const ending = endingData();
     const trueItems = ["月白花の核", "天球儀の欠片", "王家の星印"].every(hasItem);
     const checks = [
-      ["好感度 88", state.aff >= 88],
+      ["親密度 88", state.aff >= 88],
       ["信頼 85", state.trust >= 85],
       ["知識 75", state.lore >= 75],
       ["決意 65", state.will >= 65],
@@ -905,7 +968,7 @@ $("reset").onclick=reset;reset();
     ];
     const box = el("event");
     box.className = "event ending";
-    box.innerHTML = `<div class="rank">${ending[0]}</div><p class="micro">ENDING / ${state.route || dominantRoute()}</p><h3>${ending[1]}</h3><p>${ending[2]}</p>
+    box.innerHTML = `<div class="rank">${ending[0]}</div><p class="micro">物語の結末</p><h3>${ending[1]}</h3><p>${ending[2]}</p>
       <div class="requirements">${checks.map(([label, ok]) => `<div class="req ${ok ? "ok" : "no"}">${ok ? "✓" : "×"} ${label}</div>`).join("")}</div>
       <button type="button" id="endingSave">この結末をセーブ</button> <button type="button" id="retryLong">最初から遊ぶ</button>`;
     el("modal").hidden = false;
@@ -990,7 +1053,7 @@ $("reset").onclick=reset;reset();
     const slots = [1, 2, 3].map((slot) => ({ slot, payload: storageRead(SLOT_KEY(slot)) }));
     const box = el("event");
     box.className = "event";
-    box.innerHTML = `<p class="micro">SAVE / LOAD</p><h3>星の記憶</h3><p>進行はこのブラウザ・この端末に保存されます。手動セーブは3枠です。</p>
+    box.innerHTML = `<p class="micro">記録の保存</p><h3>星の記憶</h3><p>進行はこのブラウザ・この端末に保存されます。手動セーブは3枠です。</p>
       <div class="save-grid">
         <div class="save-slot"><strong>自動セーブ</strong><small>${saveDateText(auto)}</small><div class="save-actions"><button type="button" data-auto-load ${auto ? "" : "disabled"}>続きから</button></div></div>
         ${slots.map(({ slot, payload }) => `<div class="save-slot"><strong>セーブ枠 ${slot}</strong><small>${saveDateText(payload)}</small>
