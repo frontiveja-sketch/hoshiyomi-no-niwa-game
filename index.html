@@ -105,6 +105,10 @@
     .event-copy{min-width:0}
     .event .micro{color:#9e7945}.event h3{margin:8px 0 13px;color:var(--plum);font-size:clamp(1.35rem,4vw,2rem);font-weight:500}
     .event>p{color:#675b68;font-size:.84rem;line-height:1.9}.event-choices{display:grid;gap:8px;margin-top:19px}
+    .event.story-event{max-height:calc(100dvh - 24px);display:grid;grid-template-rows:minmax(0,1fr) auto;overflow:hidden}
+    .story-event .event-head{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:6px}
+    .story-event .event-choices{position:relative;z-index:1;margin-top:12px;padding-top:10px;border-top:1px solid rgba(77,56,95,.14);
+      background:linear-gradient(180deg,rgba(241,229,232,0),rgba(241,229,232,.96) 9px)}
     .event-choice{padding:13px 15px;border:1px solid rgba(77,56,95,.2);text-align:left;color:#40344e;background:rgba(255,255,255,.72);cursor:pointer}
     .event-choice:hover:not(:disabled){border-color:var(--rose);background:white}.event-choice:disabled{opacity:.4}
     .event-choice strong{display:block;font-size:.82rem;font-weight:500}.event-choice span{display:block;margin-top:3px;color:#8e7d89;font-size:.65rem}
@@ -237,9 +241,18 @@
     .ending .rank{display:none}.ending button{border-radius:2px;background:#725447}
     @media(max-width:1100px){.action{padding-left:8px}}
     @media(max-width:640px){
-      .modal{padding:9px}.event{padding:16px}.event-head{grid-template-columns:88px minmax(0,1fr);gap:12px}.event-visual{width:88px}
+      .modal{padding:7px}.event{padding:14px}.event-head{grid-template-columns:82px minmax(0,1fr);gap:10px}.event-visual{width:82px}
       .event h3{margin:5px 0 8px;font-size:1.08rem}.event>p,.event-copy>p{font-size:.72rem;line-height:1.55}.event .comic-aside{margin-top:8px;padding:6px 8px;font-size:.62rem}
-      .event-choices{gap:5px;margin-top:12px}.event-choice{padding:9px 10px}.event-choice strong{font-size:.72rem}.event-choice span{font-size:.58rem}
+      .story-event .event-head{padding-right:3px}.story-event .event-choices{gap:4px;margin-top:7px;padding-top:7px}
+      .event-choice{padding:7px 9px}.event-choice strong{font-size:.7rem}.event-choice span{margin-top:2px;font-size:.56rem;line-height:1.2}
+    }
+    @media(max-height:560px){
+      .event.story-event{max-height:calc(100dvh - 10px);padding:10px 12px}
+      .event-head{grid-template-columns:72px minmax(0,1fr);gap:9px}.event-visual{width:72px}
+      .event h3{margin:3px 0 6px;font-size:1rem}.event-copy>p{margin:5px 0;font-size:.66rem;line-height:1.4}
+      .event .comic-aside{margin-top:5px;padding:4px 7px;font-size:.58rem;line-height:1.35}
+      .story-event .event-choices{gap:3px;margin-top:5px;padding-top:5px}.event-choice{padding:5px 8px}
+      .event-choice strong{font-size:.66rem}.event-choice span{font-size:.53rem}
     }
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
@@ -971,7 +984,7 @@ $("reset").onclick=reset;reset();
     state.reaction = event.reaction;
     render();
     const box = el("event");
-    box.className = "event";
+    box.className = "event story-event";
     const paragraphs = event.text.split("\n").map((text) => `<p>${text}</p>`).join("");
     const comic = event.comic ? `<p class="comic-aside"><strong>その頃の研究所</strong>${event.comic}</p>` : "";
     box.innerHTML = `<div class="event-head"><div class="event-visual ${event.mood}" role="img" aria-label="${event.title}のドット絵"></div><div class="event-copy"><p class="micro">${event.tag}</p><h3>${event.title}</h3>${paragraphs}${comic}</div></div><div class="event-choices"></div>`;
